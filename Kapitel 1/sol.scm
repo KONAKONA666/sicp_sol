@@ -207,5 +207,14 @@ k = 5
                 (f a) (f b))))
 
 
+Übung 1.30
+
+(define (summe term a next b)
+  (define (iter a res)
+    (if (>= a b)
+        res
+        (iter (next a) (+ res (term a)))))
+  (iter a 0))
 
 
+Übung 1.31
