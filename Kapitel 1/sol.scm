@@ -150,6 +150,62 @@ Der Zweite ist iterativ
 
 Leider kann ich LaTEX nicht benutzen. Ich bin zu faul, das zu erlernen
 
-Übung 1.14
+Übung 1.14	
+ 
+Es ist einfach, zu beweisen, dass wenn es nur eine Munze gegeben ist, braucht die Function 2n+2 Operationen, um den Betrag auszuwerten.
+Bezeichen wir es als T(n, 1)
+
+Betrachten wir das Fall mit 2 Munzen. auf disem Fall ist die Länge des rechten Teilbaums n/5, in dem jeder Knoten seinen Teilbaum hat, der änlich wie das mit einer Munze Fall überlegt werden kann. Deshalb ist die Anzal der Operationen n/5 * T(n, 1) -> n/5*(2n+2) = O(n^2)
+
+Die Idee besteht darin, dass der Betrag rekursiv ausgewertet werden kann, f(n, a[k])*T(n, k-1). Man bemerke, dass die f(n, a[k]) gleich n/a[k] ist und so sieht das Muster aus, dass O(T(n, k)) O(n^k) ist. 
+
+Übung 1.15
+
+12.15/3^k <= 0.1
+121.5 <= 3^k
+k = 5
+
+Übung 1.17
+
+(define (halfte x) 
+  (/ x 2))
+
+(define (doppelt x) 
+  (+ x x))
+
+(define (m a b)
+  (cond ((= a 2) (doppelt b))
+        ((even? a) (doppelt (m (halfte a) b)))
+        (else (+ b (m (- a 1) b)))))
+
+
+Übung 1.19
+(define (fib n)
+  (fib_iter 1 0 0 1 n))
+
+(define (quadrat x) (* x x))
+
+(define (fib_iter a b p q n)
+  (cond ((= n 0) b)
+        ((even? n)
+          (fib_iter a b 
+          (+ (quadrat p) (quadrat q))
+          (+ (quadrat q) (* 2 (* p q))) (/ n 2)))
+        (else (fib_iter (+ (* b q) (* a q) (* a p)) 
+                        (+ (* b p) (* a q)) p q (- n 1)))))
+
+Übung 1.29
+
+
+(define (integral-simpson f a b n)
+  (define h (/ (- b a) n))
+  (define (simpson-next x)
+    (+ x (* 2 h)))
+
+  (* (/ h 3) (+ (* 4 (summe f (+ a h) simpson-next b))
+                (* 2 (summe f (+ a (* 2 h)) simpson-next b)) 
+                (f a) (f b))))
+
+
 
 
