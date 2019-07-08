@@ -218,3 +218,33 @@ k = 5
 
 
 Übung 1.31
+
+a) (define (product term a next b)
+  (if (> a b)
+    1
+    (* (term a) (product term (next a) next b))))
+
+(define (inc n) (+ 1 n))
+(define (self x) x)
+
+(define (fact n)
+  (product self 1 inc n))
+
+
+(define (fact n)
+  (product self 1 inc n))
+ (define (pi-next x)
+     (+ x 2))
+(define pi
+  (* 200 (/ (product square 2 pi-next 99)
+          (product square 1 pi-next 99))))
+
+Übung 1.32
+
+(define (akkumulator kombinierer null-groesse term a naechstes b)
+  (if (> a b)
+      null-groesse
+      (kombinierer a 
+                  (akkumulator kombinierer null-groesse term (naechstes a) naechstes b))))
+
+	
