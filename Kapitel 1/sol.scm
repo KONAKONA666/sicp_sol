@@ -247,4 +247,32 @@ a) (define (product term a next b)
       (kombinierer a 
                   (akkumulator kombinierer null-groesse term (naechstes a) naechstes b))))
 
-	
+Übung 1.36
+
+(fixpoint (lambda (x) (/ (log 1000) (log x))) 2)
+
+Übung 1.37
+
+(define (cont-frac n d k)
+  (if (= k 0)
+      d
+      (+ d (/ n (cont-frac n d (- k 1))))))
+
+
+
+
+1.39
+
+ (define (cont-fact n d k)
+   (define (recur i)
+     (if (> i k)
+         0
+         (/ (n i) (+ (d i) (recur (+ 1 i))))))
+   (recur 1))
+
+ (define (tan-cf x k)
+   (cont-fact (lambda (i)
+                (if (= i 1) x (- (* x x))))
+              (lambda (i)
+                (- (* i 2) 1))
+              k))
