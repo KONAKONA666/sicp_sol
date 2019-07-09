@@ -293,3 +293,11 @@ a) (define (product term a next b)
 (define (composition f g)
   (lambda (x) (f (g x))))
 
+1.43
+
+(define (n-times f n)
+  (if (= n 1)
+      f
+      (composition f (n-times f (- n 1)))))
+
+

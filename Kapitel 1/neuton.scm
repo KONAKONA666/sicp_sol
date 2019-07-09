@@ -45,3 +45,12 @@
 (define (doppelt f)
   (lambda (x) (f (f x))))
 
+(define (composition f g)
+  (lambda (x) (f (g x))))
+
+(define (n-times f n)
+  (if (= n 1)
+      f
+      (composition f (n-times f (- n 1)))))
+
+
