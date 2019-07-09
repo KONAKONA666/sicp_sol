@@ -34,3 +34,14 @@
 
 (define (n-root n x)
   (newton (lambda (y) (- (fast-exp y n) x)) 1.0))
+
+(define (fixpoint-from-transformation f transformation approx)
+  (fixpoint (transformation f) approx))
+
+
+(define (cubic-equation a b c)
+  (lambda (x) (+ (* x x x) (* a x x) (* b x) c)))
+
+(define (doppelt f)
+  (lambda (x) (f (f x))))
+

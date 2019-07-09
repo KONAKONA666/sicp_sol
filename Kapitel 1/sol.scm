@@ -276,3 +276,13 @@ a) (define (product term a next b)
               (lambda (i)
                 (- (* i 2) 1))
               k))
+
+1.40
+(define (cubic-equation a b c)
+  (lambda (x) (+ (* x x x) (* a x x) (* b x) c)))
+
+1.41
+
+
+(define (doppelt f)
+  (lambda (x) (f (f x))))
