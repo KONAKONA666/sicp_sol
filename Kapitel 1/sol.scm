@@ -286,3 +286,10 @@ a) (define (product term a next b)
 
 (define (doppelt f)
   (lambda (x) (f (f x))))
+
+1.42
+
+
+(define (composition f g)
+  (lambda (x) (f (g x))))
+
