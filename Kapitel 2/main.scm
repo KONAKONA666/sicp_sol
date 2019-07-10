@@ -45,6 +45,74 @@
   (display (denom x)))
 
 
+(define (const-line x y)
+  (cons x y))
+
+(define (mid-point x)
+  (/ (+ (x-cordinate y-cordinate))))
+
+(define (print-line x)
+  (newline)
+  (display "(")
+  (display (x-cordinate x))
+  (display ",")
+  (display (y-cordinate x))
+  (display ")"))
+
+(define (rec-first-cordinate x)
+  (car x))
+
+(define (rec-second-cordinate x)
+  (cdr x))
+
+(define (x-cordinate x)
+  (car x))
+
+(define (y-cordinate x)
+  (cdr x))
+
+
+(define (const-rectangle x y)
+  (cons x y))
+
+(define (calc-area-rectangle x)
+  (* (width x) (height x)))
+
+(define (width x)
+  (abs (- (rec-first-cordinate (x-cordinate x))
+          (rec-second-cordinate (x-cordinate x)))))
+
+
+(define (height x)
+  (abs (- (rec-first-cordinate (y-cordinate x))
+          (rec-second-cordinate (y-cordinate x)))))
+
+(define (print-row symbol n)
+    (if (= n 0)
+        (newline)
+        ((lambda (x) (display symbol) (print-row symbol (- n 1))) 0)))
+
+(define (print-rectangle x)
+  (define (print-iterator symbol n k f)
+    (print-row symbol n)
+    (f (+ k 1)))
+  (lambda (i)
+   (let ((w (width x)) (h (height x)))
+     (define (print-loop curr)
+       (cond ((= curr h)
+              (newline))
+             ((or (= curr 0) (= curr (- h 1)))
+              (print-iterator "-" w (+ curr 1) print-loop))
+             (else
+              (print-iterator "|" w (+ curr 1) print-loop))))
+     (print-loop 0))))
+
+
+
+
+
+
+
 
 
 
