@@ -12,4 +12,25 @@
     (cons (/ (sign x) g) (/ (abs y) g))))
 
 
+2.2
 
+
+(define (const-line x y)
+  (cons x y))
+
+(define (y-cordinate x)
+  (car x))
+
+(define (x-cordinate x)
+  (cdr x))
+
+(define (mid-point x)
+  (/ (+ (x-cordinate y-cordinate))))
+
+(define (print-line x)
+  (newline)
+  (display "(")
+  (display (x-cordinate x))
+  (display ",")
+  (display (y-cordinate x))
+  (display ")"))
